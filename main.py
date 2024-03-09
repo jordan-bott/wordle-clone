@@ -1,4 +1,5 @@
 from check_word_validity import check_word_validity
+from create_schema import create_schema
 import sys
 
 
@@ -25,8 +26,10 @@ def main(wordle_word):
                 if valid_word:
                     is_valid = True
         guessed_words.append(guess)
+        wordle_schema = create_schema(wordle_word, guess)
+        print(wordle_schema)
 
     print("Sorry, you didn't win this time")
 
 
-main("pears")
+main(sys.argv[1])
