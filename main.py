@@ -1,11 +1,12 @@
 from check_word_validity import check_word_validity
 from create_schema import create_schema
+from possible_words import possible_words
 import sys
+import random
 
 
-def main(wordle_word):
-
-    wordle_word = wordle_word.upper()
+def main():
+    wordle_word = possible_words()[random.randint(0, 2315)].upper()
     guessed_words = []
     final_schema = ""
 
@@ -35,4 +36,4 @@ def main(wordle_word):
     print(final_schema)
 
 
-main(sys.argv[1])
+main()
