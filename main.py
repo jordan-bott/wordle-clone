@@ -3,37 +3,30 @@ import sys
 
 
 def main(wordle_word):
-    print(sys.argv)
-    print("wordle", wordle_word)
 
+    wordle_word = wordle_word.upper()
     guessed_words = []
-    turn_number = 1
 
-    for i in range(0, 6):
-        guess = input("Enter a wordle guess\t").upper()
-        print("guess", guess, i)
+    for i in range(1, 7):
+        guess = input(f"Enter wordle guess number {i}:\t").upper()
 
         if guess == wordle_word:
             return print("You won the game!")
 
-        valid_word = check_word_validity(guess)
+        valid_word = check_word_validity(guess, guessed_words)
 
         if not valid_word:
             is_valid = False
-            print("you made a guess that is not valid")
             while is_valid is False:
-                guess = input("Enter a wordle guess\t").upper()
+                guess = input(f"Try guess number {i} again:\t").upper()
                 if guess == wordle_word:
                     return print("You won the game!")
-                valid_word = check_word_validity(guess)
+                valid_word = check_word_validity(guess, guessed_words)
                 if valid_word:
                     is_valid = True
+        guessed_words.append(guess)
 
     print("Sorry, you didn't win this time")
 
 
-
-    return "nices"
-
-
-main(sys.argv[1])
+main("pears")
